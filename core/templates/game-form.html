@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap4 %}
+    <meta charset="UTF-8">
+    <title>Cadastrar/Atualizar Game</title>
+</head>
+<body>
+    <h1>Cadastrar/Atualizar Game</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+        <button type="submit">Salvar</button>
+        {% endbuttons %}
+    </form>
+
+    {% if games %}
+        <a href="{% url 'delete_game' games.id %}">Apagar</a>
+    {% endif %}
+</body>
+</html>

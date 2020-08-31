@@ -1,0 +1,14 @@
+body {
+    font: "Open Sans";
+    background-color: #C7C9CB;
+}
+
+h1 {
+    text-align: center;
+}
+
+.card-title{
+    font-size: 20px;
+    color: #758594;
+}
+
