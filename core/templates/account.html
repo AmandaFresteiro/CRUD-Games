@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <h1> Criar Conta </h1>
+    <form class="site-form" action="{% url 'sign_up' %}" method='POST'>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Criar conta">
+    </form>
+<body>
+
+</body>
+</html>
