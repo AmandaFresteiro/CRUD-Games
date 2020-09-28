@@ -1,6 +1,6 @@
 body {
     font: "Open Sans";
-    background-color: #C7C9CB;
+    background-image: linear-gradient(to right, #931783 , black);
 }
 
 h1 {
@@ -50,13 +50,12 @@ body {
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 50px;
+  padding-left: 80px;
   text-align: center;
   background-color: #f1f1f1;
   width: 300px;
   height: 300px;
-
 }
 
 /* Responsive columns - one column layout (vertical) on small screens */
@@ -69,7 +68,46 @@ body {
 }
 
 .card img{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
+#memory-card {
+    left:600%;
+	top:200%;
+	margin-left:900px;
+	margin-top:-300px;
+	font-family: Grandstander;
+}
+
+#account .container{
+    background-image: linear-gradient(to right, #931783 , black);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #ffffff;
+}
+
+.active {
+  background-color: #ffffff;
+}

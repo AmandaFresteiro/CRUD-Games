@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load bootstrap4 %}
+    {% load static %}
+    {% load crispy_forms_tags %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <title>Cadastrar/Atualizar Game</title>
+    <link rel="stylesheet" href="{% static 'css/static.css' %}">
+    <title>Memory-Card</title>
 </head>
 <body>
-    <h1>Cadastrar/Atualizar Game</h1>
-    <form method="POST" enctype="multipart/form-data">
+    <div class="container p-3 my-3 bg-dark text-white">
+    <h1> Memory-Card </h1>
+        <h2>Cadastrar Novo Game</h2>
+    </div>
+    <form class="site-form" action="{% url 'register_game' %}" enctype="multipart/form-data" method='POST'>
+        <main class="container">
+        <div class="row">
+        <div class="col-4">
         {% csrf_token %}
-        {% bootstrap_form form %}
-        {% buttons %}
-        <button type="submit">Salvar</button>
-        {% endbuttons %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-dark">Salvar</button>
+        </div>
+        </div>
+        </main>
     </form>
 
     {% if games %}
-        <a href="{% url 'delete_game' games.id %}">Apagar</a>
+        <a href="{% url 'delete_game' games.id %}"><button type="submit" class="btn btn-dark">Apagar Game</button></a>
     {% endif %}
+
 </body>
 </html>

@@ -2,23 +2,39 @@
 <html lang="en">
 <head>
     {% load static %}
-    {% load bootstrap4 %}
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    {% load crispy_forms_tags %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/static.css' %}">
+    <title>MemoryCard - Profile</title>
 
-    <title>Profile</title>
-
-    <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="{% static 'css/static.css' %}">
 </head>
 <body>
-    <div class="alert alert-info" role="alert">
-    <h1>Profile</h1>
+    <div class="container p-3 my-3 bg-dark text-white">
+    <h1> Memory-Card </h1>
+        <h2>PROFILE</h2>
     </div>
-    <div class="alert alert-secondary" role="alert">
-    <h2>Games Cadastrados</h2>
-    </div>
-    <br>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-light">
+
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'profile' %}">Todos os Jogos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'my_games' %}">Meus Jogos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register_game' %}">Cadastrar Game</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Logout</a>
+        </li>
+      </ul>
+
+        {{ user }}
+
+    </nav>
     <div class="row">
        {% for game in games %}
     <div class="column">
@@ -27,13 +43,12 @@
         </a>
     <div class="container">
         {{ game.name_game }}
-        <a href="{% url 'update_game' game.id %}">Veja Mais</a>
+        <a href="{% url 'update_game' game.id %}"><button type="submit" class="btn btn-dark">Veja Mais</button></a>
     </div>
     </div>
     </div>
         {% endfor %}
 </div>
-    <a href="{% url 'register_game' %}"><button type="button" class="btn btn-outline-secondary">Cadastrar/Atualizar Game</button></a>
 
 
 </body>

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Game
 from .forms import GameForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate, login as auth_login
 
 
 def profile(request):
@@ -40,8 +41,9 @@ def delete_game(request, id):
     return render(request, 'game-delete-ok.html', {'games': games})
 
 
-def account_create(request):
-    return render(request, 'sign_up.html')
+def my_games(request):
+    games = Game.objects.filter(author=request.user)
+    return render(request, 'profile.html', {'games': games})
 
 
 def sign_up(request):
@@ -49,7 +51,7 @@ def sign_up(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-        return redirect('account_create')
+        return redirect('profile')
 
     else:
         form = UserCreationForm()
@@ -60,7 +62,12 @@ def login(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            return redirect('profile')
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                return redirect('profile')
 
     else:
         form = AuthenticationForm()
